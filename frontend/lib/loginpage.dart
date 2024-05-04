@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/regScreen.dart';
+import 'package:frontend/Confirmation.dart';
 
 class loginScreen extends StatelessWidget {
   const loginScreen({Key? key}) : super(key: key);
@@ -52,21 +52,7 @@ class loginScreen extends StatelessWidget {
                             color: Colors.grey,
                           ),
                           label: Text(
-                            'Username',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffB81736),
-                            ),
-                          )),
-                    ),
-                    const TextField(
-                      decoration: InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'Password',
+                            'Phone Number',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xffB81736),
@@ -76,75 +62,36 @@ class loginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          color: Color(0xff281537),
-                        ),
-                      ),
-                    ),
                     const SizedBox(
                       height: 70,
                     ),
-                    Container(
-                      height: 55,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: const LinearGradient(colors: [
-                          Color(0xffB81736),
-                          Color(0xff281537),
-                        ]),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'SIGN IN',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.white),
+                    GestureDetector(
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => const otp())),
+                      child: Container(
+                        height: 55,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          gradient: const LinearGradient(colors: [
+                            Color(0xffB81736),
+                            Color(0xff281537),
+                          ]),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'SIGN IN',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 150,
                     ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          const Text(
-                            "Don't have account?",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const RegScreen()));
-                            },
-                            child: Text(
-                              "Sign up",
-                              style: TextStyle(
-
-                                  ///done login page
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Colors.black),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),
