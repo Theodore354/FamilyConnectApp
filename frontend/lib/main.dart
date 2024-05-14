@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontend/Homepage.dart';
-import 'package:frontend/WelcomeScreen.dart';
 import 'package:frontend/loginpage.dart';
 
 void main() {

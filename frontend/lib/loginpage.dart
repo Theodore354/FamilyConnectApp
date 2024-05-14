@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/Confirmation.dart';
 import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   final TextEditingController phoneNumberController = TextEditingController();
-  String phoneNumber = ''; // Variable to store the phone number
+  String phoneNumber = '';
+
+  LoginScreen({super.key}); // Variable to store the phone number
 
   Future<void> sendOTP(String phoneNumber) async {
     String clientId = 'oddyxlyp';
     String clientSecret = 'hyvzuzjx';
     String from = 'TheoTheo';
-    String url = 'https://smsc.hubtel.com/v1/messages/send'
-        '?clientsecret=$clientSecret'
-        '&clientid=$clientId'
-        '&from=$from'
-        '&to=$phoneNumber'
-        '&content=This+Is+A+Test+Message';
+    String url = 'https://smsc.hubtel.com/v1/messages/send';
 
-    final response = await http.get(Uri.parse(url));
+    final uri = Uri.parse(url);
+    final requestUri = uri.replace(
+      queryParameters: {
+        'clientsecret': clientSecret,
+        'clientid': clientId,
+        'from': from,
+        'to': phoneNumber,
+        'content': 'This+Is+A+Test+Message',
+      },
+    );
 
-    if (response.statusCode == 200) {
+    final response = await http.get(requestUri);
+
+    if (response.statusCode == 201) {
       // OTP request successful
       print('OTP request successful');
     } else {

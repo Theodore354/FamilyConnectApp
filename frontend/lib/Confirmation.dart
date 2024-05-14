@@ -1,8 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/Homepage.dart';
+import 'package:http/http.dart' as http;
 import 'package:pinput/pinput.dart';
 
 class otp extends StatelessWidget {
   const otp({Key? key}) : super(key: key);
+
+  Future<bool> sendOTP(String phoneNumber) async {
+    String clientId = 'oddyxlyp';
+    String clientSecret = 'hyvzuzjx';
+    String from = 'TheoTheo';
+    String url = 'https://smsc.hubtel.com/v1/messages/send'
+        '?clientsecret=$clientSecret'
+        '&clientid=$clientId'
+        '&from=$from'
+        '&to=$phoneNumber'
+        '&content=This+Is+A+Test+Message';
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      // OTP request successful
+      print('OTP request successful');
+      // Simulate successful verification (replace this with actual verification logic)
+      return true;
+    } else {
+      // OTP request failed
+      print('Failed to send OTP: ${response.body}');
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +95,20 @@ class otp extends StatelessWidget {
                     border: Border.all(color: Colors.green),
                   ),
                 ),
-                onCompleted: (pin) => debugPrint(pin),
+                onCompleted: (pin) async {
+                  bool verified = await sendOTP(pin);
+                  if (verified) {
+                    // OTP verification successful, navigate to next screen
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homepage()));
+                  } else {
+                    // OTP verification failed, show error message
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content:
+                          Text('OTP verification failed. Please try again.'),
+                    ));
+                  }
+                },
               ),
             ],
           ),
