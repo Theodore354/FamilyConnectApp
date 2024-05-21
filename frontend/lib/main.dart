@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:frontend/loginpage.dart';
+import 'package:frontend/otp_screen.dart';
+import 'home_screen.dart';
+import 'family_members.dart';
+import 'notifications.dart';
+import 'settings.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
-  runApp(const MyApp());
+  runApp(MyFamilyConnectApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MyFamilyConnectApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'MyFamilyConnectApp',
       theme: ThemeData(
-        fontFamily: ('inter'),
-        useMaterial3: true,
+        primarySwatch: Colors.red,
       ),
-      home: LoginScreen(),
+      initialRoute: '/otp',
+      routes: {
+        '/otp': (context) => OTPScreen(phoneNumber: '057-263-3553'),
+        '/home': (context) => const Homepage(),
+        '/family_members': (context) => FamilyMembersScreen(),
+        '/notifications': (context) => NotificationsScreen(),
+        '/settings': (context) => SettingsScreen(),
+      },
     );
   }
 }
