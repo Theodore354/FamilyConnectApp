@@ -1,6 +1,6 @@
 # FamilyConnectApp
 
-FamilyConnectApp is a Flutter application designed to manage and display information about family members. This guide provides steps to set up both local and cloud databases using SQLite and Firebase Firestore.
+FamilyConnectApp is a Flutter application designed to manage and display information about family members. 
 
 ## Features
 
