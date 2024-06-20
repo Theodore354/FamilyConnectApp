@@ -24,9 +24,7 @@ FamilyConnectApp is a Flutter application designed to manage and display informa
 - Dart SDK
 - Node.js and npm
 - Hubtel API credentials
-- [Setup SQLite for Local Storage](#setup-sqlite-for-local-storage)
-- [Setup Firebase Firestore for Cloud Storage](#setup-firebase-firestore-for-cloud-storage)
-- [Running the App](#running-the-app)
+
 
 ## Usage
 
